@@ -28,14 +28,25 @@ BenutzerUI::BenutzerUI(QWidget *parent) :
 
 
 void BenutzerUI:: ViewWatchlistClicked(){
-
+    /*
     QString content = "In der Datenbank gibt es folgende Filme: \n";
     for (auto &iter : ben->get_all_watch()) {
          content += QString::fromStdString(iter.anschreiben());
     }
     QMessageBox msgBox;
     msgBox.setText(content);
-    msgBox.exec();
+    msgBox.exec();*/
+    if(ben->formatgetter()=="watchlist.html")
+    {
+        QDir dir;
+        QString path=dir.currentPath()+"/watchlist.html";
+        QDesktopServices::openUrl(QUrl(path));
+    }
+    else{
+        QDir dir;
+        QString path=dir.currentPath()+"/watchlist.csv";
+        QDesktopServices::openUrl(QUrl(path));
+    }
 
 }
 
